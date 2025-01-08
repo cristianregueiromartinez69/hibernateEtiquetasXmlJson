@@ -41,7 +41,7 @@ public class Pokedex {
     @JsonProperty("misc")
     private String misc;
 
-    @OneToMany(mappedBy = "pokedexentry")
+    @OneToMany(mappedBy = "pokedexentry", fetch = FetchType.EAGER)
     @JacksonXmlElementWrapper(localName = "pokemons")
     @JacksonXmlProperty(localName = "pokemon")
     @JsonProperty("pokemons")

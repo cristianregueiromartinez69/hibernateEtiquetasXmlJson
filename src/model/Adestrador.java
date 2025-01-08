@@ -36,7 +36,7 @@ public class Adestrador {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate nacemento;
 
-    @OneToMany(mappedBy = "adestrador")
+    @OneToMany(mappedBy = "adestrador", fetch = FetchType.EAGER)
     @JacksonXmlElementWrapper(localName = "pokemons")
     @JacksonXmlProperty(localName = "pokemon")
     @JsonProperty("pokemons")
@@ -98,10 +98,23 @@ public class Adestrador {
 
     @Override
     public String toString() {
-        return "\nAdestrador: " +
-                "\nid: " + id +
-                "\nnome: " + nome  +
-                "\nnacemento: " + nacemento +
-                "\npokemons: " + pokemons;
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("\nAdestrador:")
+                .append("\nId: ").append(id)
+                .append("\nNome: ").append(nome)
+                .append("\nNacemento: ").append(nacemento)
+                .append("\npokemons:").append(pokemons);
+
+        if (pokemons != null) {
+            sb.append("\nPokemon:")
+                    .append("\nId: ").append(id)
+                    .append("\nNome: ").append(nome)
+                    .append("\nNacemento: ").append(nacemento);
+        } else {
+            sb.append("Null");
+        }
+
+        return sb.toString();
     }
 }

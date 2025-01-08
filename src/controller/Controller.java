@@ -17,6 +17,7 @@ public class Controller {
         //crud.insertar2AdestradoresInAdestrador(metodosAdestrador.getAdestradoresList());
         //crud.insertar12PokemonsInPokemonDB(metodosPokemon.getPokemonList(crud.getPokedexFromDB(), crud.getAdestradorFromDB()));
 
-        metodosPokemon.leerDatosPokemons(crud.getPokemonFromDB());
+        //metodosPokemon.leerDatosPokemons(crud.getPokemonFromDB());
+        metodosAdestrador.leerAdestradorList(crud.getAdestradorFromDB());
     }
 }

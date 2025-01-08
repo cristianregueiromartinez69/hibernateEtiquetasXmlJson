@@ -34,14 +34,14 @@ public class Pokemon {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate nacemento;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pokedexentry")
     @JacksonXmlProperty(localName = "pokedexEntry")
     @JsonProperty("poedex_entry")
     @JsonManagedReference
     private Pokedex pokedexentry;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "adestrador")
     @JacksonXmlProperty(localName = "adestrador")
     @JsonProperty("adestrador")
@@ -116,11 +116,33 @@ public class Pokemon {
 
     @Override
     public String toString() {
-        return "\nPokemon: " +
-                "\nid: " + id +
-                "\nnome: " + nome  +
-                "\nnacemento: " + nacemento +
-                "\npokedexentry: " + (pokedexentry != null ? pokedexentry.getId() + " - " + pokedexentry.getNome() : "") +
-        "\nadestrador: " + (adestrador != null ? adestrador.getId() + " - " + adestrador.getNome() : "");
+        StringBuilder sb = new StringBuilder();
+        sb.append("\nPokemon:")
+                .append("\nId: ").append(id)
+                .append("\nNome: ").append(nome)
+                .append("\nNacemento: ").append(nacemento)
+                .append("\nPokedexentry:");
+
+        if (pokedexentry != null) {
+            sb.append("\n  Id: ").append(pokedexentry.getId())
+                    .append("\n  Nome: ").append(pokedexentry.getNome())
+                    .append("\n  Peso: ").append(pokedexentry.getPeso())
+                    .append("\n  Misc: ").append(pokedexentry.getMisc());
+        } else {
+            sb.append(" null");
+        }
+
+        sb.append("\nAdestrador: ");
+        if (adestrador != null){
+            sb.append("\n Id: ").append(adestrador.getId())
+                    .append("\n  Nome: ").append(adestrador.getNome())
+                    .append("\n nacemento: ").append(adestrador.getNacemento());
+        }
+        else{
+            sb.append(" null");
+        }
+
+        return sb.toString();
     }
+
 }
