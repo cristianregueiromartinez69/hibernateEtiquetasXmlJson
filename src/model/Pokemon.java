@@ -35,7 +35,7 @@ public class Pokemon {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pokedexentry")
     @JacksonXmlProperty(localName = "pokedexEntry")
-    @JsonProperty("poedex_entry")
+    @JsonProperty("pokedex_entry")
     @JsonManagedReference
     private Pokedex pokedexentry;
 
@@ -45,6 +45,8 @@ public class Pokemon {
     @JsonProperty("adestrador")
     @JsonManagedReference
     private Adestrador adestrador;
+
+
 
     public Pokemon(Integer id, String nome, LocalDate nacemento, Pokedex pokedexentry, Adestrador adestrador) {
         this.id = id;

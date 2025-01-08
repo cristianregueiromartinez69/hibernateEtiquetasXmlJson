@@ -8,6 +8,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -40,6 +41,10 @@ public class Adestrador {
     @JsonProperty("pokemons")
     @JsonBackReference
     private Set<model.Pokemon> pokemons = new LinkedHashSet<>();
+
+
+
+
 
     public Adestrador(Integer id, String nome, LocalDate nacemento, Set<Pokemon> pokemons) {
         this.id = id;
