@@ -6,7 +6,6 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import model.Adestrador;
 import model.Pokemon;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -19,6 +18,7 @@ public class WriteReadFilesXmlJson {
         try {
             File file = new File("pokemon.xml");
             xmlMapper.writerWithDefaultPrettyPrinter().writeValue(file, pokemonList);
+
             System.out.println("Pokemons escritos correctamente en el fiochero xml");
         } catch (IOException ex) {
             ex.printStackTrace();
