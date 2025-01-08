@@ -1,9 +1,6 @@
 package model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
@@ -21,6 +18,7 @@ public class Pokemon {
     @Column(name = "id", nullable = false)
     @JacksonXmlProperty(localName = "id", isAttribute = true)
     @JsonProperty("id")
+    @JsonIgnore
     private Integer id;
 
     @Column(name = "nome", nullable = false, length = 50)

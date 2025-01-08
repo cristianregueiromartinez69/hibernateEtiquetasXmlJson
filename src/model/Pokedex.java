@@ -1,8 +1,6 @@
 package model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
@@ -23,6 +21,7 @@ public class Pokedex {
     @Column(name = "id", nullable = false)
     @JacksonXmlProperty(localName = "id", isAttribute = true)
     @JsonProperty("id")
+    @JsonIgnore
     private Integer id;
 
     @Column(name = "nome", nullable = false, length = 50)
@@ -45,7 +44,7 @@ public class Pokedex {
     @JacksonXmlElementWrapper(localName = "pokemons")
     @JacksonXmlProperty(localName = "pokemon")
     @JsonProperty("pokemons")
-    @JsonManagedReference
+    @JsonBackReference
     private Set<model.Pokemon> pokemons = new LinkedHashSet<>();
 
     public Pokedex(Integer id, String nome, BigDecimal peso, String misc, Set<Pokemon> pokemons) {

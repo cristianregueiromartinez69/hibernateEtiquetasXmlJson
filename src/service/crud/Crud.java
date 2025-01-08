@@ -80,16 +80,21 @@ public class Crud {
 
             List<Pokemon> pokemonList = session.createQuery("from Pokemon", Pokemon.class).getResultList();
 
-            for (Pokemon pokemon : pokemonList) {
-                Hibernate.initialize(pokemon.getAdestrador());
-                Hibernate.initialize(pokemon.getPokedexentry());
-            }
 
             transaction.commit();
 
-
-
             return pokemonList;
+        }
+    }
+
+    public void deleteDataFromDb(String Query){
+        try (Session session = HibernateConfig.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            session.createQuery(Query).executeUpdate();
+            transaction.commit();
+
+            System.out.println("Datos borrados correctamente de la base de datos");
         }
     }
 
