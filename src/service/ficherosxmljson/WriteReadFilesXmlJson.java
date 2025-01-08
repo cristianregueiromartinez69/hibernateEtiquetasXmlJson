@@ -1,6 +1,8 @@
 package service.ficherosxmljson;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -65,6 +67,18 @@ public class WriteReadFilesXmlJson {
             System.out.println("Ups, error al escribir en el JSON de adestrador");
         }
     }
+
+    public List<Pokemon> readXmlFilePokemon(){
+        XmlMapper xmlMapper = new XmlMapper();
+
+        try{
+            return xmlMapper.readValue(new File("pokemon.xml"), xmlMapper.getTypeFactory().constructCollectionType(List.class, Pokemon.class));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 
 }

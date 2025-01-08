@@ -45,7 +45,7 @@ public class Pokedex {
     @JacksonXmlProperty(localName = "pokemon")
     @JsonProperty("pokemons")
     @JsonBackReference
-    private Set<model.Pokemon> pokemons = new LinkedHashSet<>();
+    private Set<Pokemon> pokemons;
 
     public Pokedex(Integer id, String nome, BigDecimal peso, String misc, Set<Pokemon> pokemons) {
         this.id = id;
