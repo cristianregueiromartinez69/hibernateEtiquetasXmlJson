@@ -38,7 +38,7 @@ public class Adestrador {
     @JacksonXmlElementWrapper(localName = "pokemons")
     @JacksonXmlProperty(localName = "pokemon")
     @JsonProperty("pokemons")
-    @JsonBackReference
+    @JsonIgnore
     private Set<Pokemon> pokemons;
 
 

@@ -37,6 +37,7 @@ public class Pokemon {
     @JacksonXmlProperty(localName = "pokedexEntry")
     @JsonProperty("pokedex_entry")
     @JsonManagedReference
+    @JsonIgnore
     private Pokedex pokedexentry;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -44,6 +45,7 @@ public class Pokemon {
     @JacksonXmlProperty(localName = "adestrador")
     @JsonProperty("adestrador")
     @JsonManagedReference
+    @JsonIgnore
     private Adestrador adestrador;
 
 
@@ -61,6 +63,11 @@ public class Pokemon {
         this.nome = nome;
         this.nacemento = nacemento;
         this.pokedexentry = pokedexentry;
+    }
+
+    public Pokemon(String nome, LocalDate nacemento) {
+        this.nome = nome;
+        this.nacemento = nacemento;
     }
 
     public Pokemon(String nome, LocalDate nacemento, Pokedex pokedexentry, Adestrador adestrador) {
