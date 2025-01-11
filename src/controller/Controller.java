@@ -40,6 +40,9 @@ public class Controller {
         Crud crud = new Crud();
 
         // Inserta datos iniciales en las bases de datos
+
+
+        /*
         crud.insertar10PokemonsInPokedex(metodosPokedex.getPokemonsList());
         crud.insertar2AdestradoresInAdestrador(metodosAdestrador.getAdestradoresList());
         crud.insertar12PokemonsInPokemonDB(metodosPokemon.getPokemonList(crud.getPokedexFromDB(), crud.getAdestradorFromDB()));
@@ -52,11 +55,15 @@ public class Controller {
         wrdXmlJson.writeJsonFilePokemon(crud.getPokemonFromDB());
         wrdXmlJson.writeJsonFileAdestradores(crud.getAdestradorFromDB());
 
+        */
+
+
         // Elimina datos de la base de datos
-        crud.deleteDataFromDb("DELETE FROM Pokemon");
-        crud.deleteDataFromDb("DELETE FROM Adestrador");
+        //crud.deleteDataFromDb("DELETE FROM Pokemon");
+        //crud.deleteDataFromDb("DELETE FROM Adestrador");
 
         // Lee los datos desde archivos XML y JSON
+
         Pokemons pokemonsJson = wrdXmlJson.readJsonFilePokemon();
         List<Pokemon> pokemonJsonList = wrdXmlJson.readListPokemonsJson(pokemonsJson);
 
@@ -69,6 +76,11 @@ public class Controller {
         Adestradores adestradoresXml = wrdXmlJson.readXmlFileAdestrador();
         List<Adestrador> adestradorXmlList = wrdXmlJson.readListAdestradorXml(adestradoresXml);
 
+
+
+
+
+        /*
         // Inserta los datos leídos desde archivos en la base de datos
         crud.insertar2AdestradoresInAdestrador(pasoIntermedioIntroducirDatosAdestrador(adestradorXmlList));
         crud.insertar12PokemonsInPokemonDB(pasoIntermedioIntroducirDatosPokemon(pokemonXmlList, crud.getAdestradorFromDB(), crud.getPokedexFromDB()));
@@ -77,61 +89,10 @@ public class Controller {
         //crud.insertar12PokemonsInPokemonDB(pasoIntermedioIntroducirDatosPokemon(pokemonJsonList, crud.getAdestradorFromDB(), crud.getPokedexFromDB()));
 
 
+         */
+
 
     }
 
-    /**
-     * Realiza un proceso intermedio para introducir los datos de los adestradores
-     * en la base de datos.
-     *
-     * @param adestradorList Lista de entrenadores (Adestradores) que se van a procesar.
-     * @return Una nueva lista de entrenadores procesados.
-     */
-    public List<Adestrador> pasoIntermedioIntroducirDatosAdestrador(List<Adestrador> adestradorList){
-       List<Adestrador> newAdestradoresList = new ArrayList<>();
-       for(Adestrador ad: adestradorList){
-           newAdestradoresList.add(new Adestrador(ad.getNacemento(), ad.getNome()));
-       }
-       return newAdestradoresList;
-    }
 
-    /**
-     * Realiza un proceso intermedio para introducir los datos de los pokémons
-     * en la base de datos.
-     *
-     * @param pokemonList Lista de Pokémon que se van a procesar.
-     * @param adestradorList Lista de entrenadores a asociar con los Pokémon.
-     * @param pokedexList Lista de Pokédex a asociar con los Pokémon.
-     * @return Una lista de Pokémon procesados y asociados a entrenadores y Pokédex.
-     */
-    public List<Pokemon> pasoIntermedioIntroducirDatosPokemon(List<Pokemon> pokemonList, List<Adestrador> adestradorList, List<Pokedex> pokedexList){
-        List<Pokemon> pokemons = new ArrayList<>();
-        Pokemon pokemon1 = new Pokemon(pokemonList.getFirst().getNome(), pokemonList.getFirst().getNacemento(), pokedexList.getFirst(), adestradorList.getFirst());
-        Pokemon pokemon2 = new Pokemon(pokemonList.get(1).getNome(), pokemonList.get(1).getNacemento(), pokedexList.get(1),  adestradorList.getFirst());
-        Pokemon pokemon3 = new Pokemon(pokemonList.get(2).getNome(), pokemonList.get(2).getNacemento(), pokedexList.get(2),  adestradorList.getFirst());
-        Pokemon pokemon4 = new Pokemon(pokemonList.get(3).getNome(), pokemonList.get(3).getNacemento(), pokedexList.get(3),  adestradorList.getFirst());
-        Pokemon pokemon5 = new Pokemon(pokemonList.get(4).getNome(), pokemonList.get(4).getNacemento(), pokedexList.get(4),  adestradorList.getFirst());
-        Pokemon pokemon6 = new Pokemon(pokemonList.get(5).getNome(), pokemonList.get(5).getNacemento(), pokedexList.get(5),  adestradorList.getFirst());
-        Pokemon pokemon7 = new Pokemon(pokemonList.get(6).getNome(), pokemonList.get(6).getNacemento(), pokedexList.get(6), adestradorList.get(1));
-        Pokemon pokemon8 = new Pokemon(pokemonList.get(7).getNome(), pokemonList.get(7).getNacemento(), pokedexList.get(7), adestradorList.get(1));
-        Pokemon pokemon9 = new Pokemon(pokemonList.get(8).getNome(), pokemonList.get(8).getNacemento(), pokedexList.get(8), adestradorList.get(1));
-        Pokemon pokemon10 = new Pokemon(pokemonList.get(9).getNome(), pokemonList.get(9).getNacemento(), pokedexList.get(9), adestradorList.get(1));
-        Pokemon pokemon11 = new Pokemon(pokemonList.get(10).getNome(), pokemonList.get(10).getNacemento(), null, adestradorList.get(1));
-        Pokemon pokemon12 = new Pokemon(pokemonList.get(11).getNome(), pokemonList.get(11).getNacemento(), null, adestradorList.get(1));
-
-        pokemons.add(pokemon1);
-        pokemons.add(pokemon2);
-        pokemons.add(pokemon3);
-        pokemons.add(pokemon4);
-        pokemons.add(pokemon5);
-        pokemons.add(pokemon6);
-        pokemons.add(pokemon7);
-        pokemons.add(pokemon8);
-        pokemons.add(pokemon9);
-        pokemons.add(pokemon10);
-        pokemons.add(pokemon11);
-        pokemons.add(pokemon12);
-
-       return pokemons;
-    }
 }

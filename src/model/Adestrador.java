@@ -56,10 +56,10 @@ public class Adestrador {
      * Se obtiene mediante la relación de uno a muchos con la entidad  Pokemon.
      */
     @OneToMany(mappedBy = "adestrador", fetch = FetchType.EAGER)
+    @JsonManagedReference("pokemons")
     @JacksonXmlElementWrapper(localName = "pokemons")
     @JacksonXmlProperty(localName = "pokemon")
     @JsonProperty("pokemons")
-    @JsonBackReference
     private Set<Pokemon> pokemons;
 
 

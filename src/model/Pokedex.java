@@ -70,10 +70,10 @@ public class Pokedex {
      * Se utiliza la carga anticipada (EAGER) para obtener todos los pokemons al acceder a la pokedex.
      */
     @OneToMany(mappedBy = "pokedexentry", fetch = FetchType.EAGER)
+    @JsonManagedReference("pokemons")
     @JacksonXmlElementWrapper(localName = "pokemons")
     @JacksonXmlProperty(localName = "pokemon")
     @JsonProperty("pokemons")
-    @JsonBackReference
     private Set<Pokemon> pokemons;
 
     /**

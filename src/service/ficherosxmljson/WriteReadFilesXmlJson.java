@@ -121,7 +121,7 @@ public class WriteReadFilesXmlJson {
             return xmlMapper.readValue(new File("pokemon.xml"), Pokemons.class);
         } catch (IOException e) {
             System.out.println("Ups, ha ocurrido un error al leer el fichero xml de pokemons");
-            //ex.printStackTrace(); Lo uso para comprobar errores
+            e.printStackTrace();
         }
         return null;
     }
@@ -138,7 +138,7 @@ public class WriteReadFilesXmlJson {
             return xmlMapper.readValue(new File("adestrador.xml"), Adestradores.class);
         } catch (IOException e) {
             System.out.println("Ups, ha ocurrido un error al leer el fichero xml de adestradores");
-            //ex.printStackTrace(); Lo uso para comprobar errores
+            e.printStackTrace();
         }
         return null;
     }
@@ -156,7 +156,7 @@ public class WriteReadFilesXmlJson {
             return objectMapper.readValue(new File("pokemon.json"), Pokemons.class);
         } catch (IOException e) {
             System.out.println("Ups, ha ocurrido un error al leer el fichero json de pokemons");
-            //ex.printStackTrace(); Lo uso para comprobar errores
+            e.printStackTrace();
         }
         return null;
     }
@@ -174,7 +174,7 @@ public class WriteReadFilesXmlJson {
             return objectMapper.readValue(new File("adestrador.json"), Adestradores.class);
         } catch (IOException e) {
             System.out.println("Ups, ha ocurrido un error al leer el fichero json de adestradores");
-            //ex.printStackTrace(); Lo uso para comprobar errores
+            e.printStackTrace();
         }
         return null;
     }
