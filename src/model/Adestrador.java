@@ -10,11 +10,22 @@ import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/**
+ * Clase que representa a un adestrador (entrenador) de pokemons.
+ * Esta clase está mapeada a una tabla en la base de datos y permite la
+ * serialización y deserialización de los datos en formato XML y JSON.
+ * @author cristian
+ * @version 1.0
+ */
 @Entity
 @Table(name = "adestrador")
 @JacksonXmlRootElement(localName = "adestrador")
 @JsonRootName(value = "adestrador")
 public class Adestrador {
+
+    /**
+     * Identificador único del adestrador. Es generado automáticamente por la base de datos.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -23,17 +34,27 @@ public class Adestrador {
     @JsonIgnore
     private Integer id;
 
+    /**
+     * Nombre del adestrador.
+     */
     @Column(name = "nome", nullable = false, length = 50)
     @JacksonXmlProperty(localName = "nome")
     @JsonProperty("nome")
     private String nome;
 
+    /**
+     * Fecha de nacimiento del adestrador.
+     */
     @Column(name = "nacemento")
     @JacksonXmlProperty(localName = "nacemento")
     @JsonProperty("nacemento")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate nacemento;
 
+    /**
+     * Conjunto de pokemons asociados al adestrador.
+     * Se obtiene mediante la relación de uno a muchos con la entidad  Pokemon.
+     */
     @OneToMany(mappedBy = "adestrador", fetch = FetchType.EAGER)
     @JacksonXmlElementWrapper(localName = "pokemons")
     @JacksonXmlProperty(localName = "pokemon")
@@ -42,9 +63,14 @@ public class Adestrador {
     private Set<Pokemon> pokemons;
 
 
-
-
-
+    /**
+     * Constructor que inicializa el adestrador con todos los campos.
+     *
+     * @param id       el identificador único del adestrador.
+     * @param nome     el nombre del adestrador.
+     * @param nacemento la fecha de nacimiento del adestrador.
+     * @param pokemons el conjunto de pokemons asociados al adestrador.
+     */
     public Adestrador(Integer id, String nome, LocalDate nacemento, Set<Pokemon> pokemons) {
         this.id = id;
         this.nome = nome;
@@ -52,20 +78,40 @@ public class Adestrador {
         this.pokemons = pokemons;
     }
 
+
+    /**
+     * Constructor que inicializa el adestrador con nombre y fecha de nacimiento.
+     *
+     * @param nacemento la fecha de nacimiento del adestrador.
+     * @param nome      el nombre del adestrador.
+     */
     public Adestrador(LocalDate nacemento, String nome) {
         this.nacemento = nacemento;
         this.nome = nome;
     }
 
+    /**
+     * Constructor que inicializa el adestrador con nombre, fecha de nacimiento
+     * y conjunto de pokemons.
+     *
+     * @param nome     el nombre del adestrador.
+     * @param nacemento la fecha de nacimiento del adestrador.
+     * @param pokemons el conjunto de pokemons asociados al adestrador.
+     */
     public Adestrador(String nome, LocalDate nacemento, Set<Pokemon> pokemons) {
         this.nome = nome;
         this.nacemento = nacemento;
         this.pokemons = pokemons;
     }
 
+    //constructor vacío
     public Adestrador() {
     }
 
+    /**
+     * Getter y setter de la clase
+     * @return los atributos correspondientes
+     */
     public Integer getId() {
         return id;
     }
@@ -98,6 +144,11 @@ public class Adestrador {
         this.pokemons = pokemons;
     }
 
+    /**
+     * Representación en forma de cadena del objeto Adestrador.
+     * Incluye la información del adestrador y sus pokemons asociados.
+     * @return una cadena con la representación del adestrador y sus pokemons.
+     */
     @Override
     public String toString() {
 
