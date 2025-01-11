@@ -6,8 +6,21 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase encargada de gestionar los métodos relacionados con la creación y manejo de una lista de Pokédex.
+ * Contiene métodos para obtener una lista de Pokémons predefinidos y para imprimir los datos de esa lista.
+ * @author cristian
+ * @version 1.0
+ */
 public class MetodosPokedex {
 
+
+    /**
+     * Metodo que crea una lista de Pokédex con datos predefinidos de varios Pokémon.
+     * Se crean objetos de tipo Pokedex con el nombre, peso y descripción de cada Pokémon.
+     *
+     * @return Lista de Pokédex con diez Pokémon predefinidos.
+     */
     public List<Pokedex> getPokemonsList() {
         List<Pokedex> pokemons = new ArrayList<>();
         Pokedex pokedex1 = new Pokedex("pikachu", BigDecimal.valueOf(6.0), "rata hepatítica");
@@ -35,6 +48,11 @@ public class MetodosPokedex {
         return pokemons;
     }
 
+    /**
+     * Metodo para imprimir los datos de los Pokémon contenidos en la lista proporcionada.
+     *
+     * @param pokedexList Lista de objetos Pokedex que se desea imprimir.
+     */
     public void leerDatosPOkedexDB(List<Pokedex> pokedexList){
         for(Pokedex pokedex : pokedexList){
             System.out.println(pokedex);

@@ -8,8 +8,23 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase encargada de gestionar los métodos relacionados con la creación y manejo de una lista de Pokémon.
+ * Contiene métodos para obtener una lista de Pokémon a partir de los datos de la Pokedex y los adiestradores,
+ * así como para imprimir los datos de los Pokémon.
+ * @author cristian
+ * @version 1.0
+ */
 public class MetodosPokemon {
 
+    /**
+     * Metodo que crea una lista de objetos Pokémon, asignándoles una Pokedex y un Adestrador.
+     * Los Pokémon son creados utilizando la información de las listas proporcionadas de Pokedex y Adestrador.
+     *
+     * @param pokedexList Lista de objetos Pokedex que contiene los Pokémon.
+     * @param adestradorList Lista de objetos Adestrador que contiene los adiestradores.
+     * @return Lista de objetos Pokémon con la información de los Pokémon, Pokedex y Adestrador.
+     */
     public List<Pokemon> getPokemonList(List<Pokedex> pokedexList, List<Adestrador> adestradorList){
         List<Pokemon> pokemons = new ArrayList<Pokemon>();
 
@@ -43,6 +58,11 @@ public class MetodosPokemon {
 
     }
 
+    /**
+     * Metodo para imprimir los datos de los Pokémon contenidos en la lista proporcionada.
+     *
+     * @param pokemonList Lista de objetos Pokémon que se desea imprimir.
+     */
     public void leerDatosPokemons(List<Pokemon> pokemonList){
         for(Pokemon pokemon : pokemonList){
             System.out.println(pokemon);
