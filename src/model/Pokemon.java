@@ -61,7 +61,6 @@ public class Pokemon {
     @JacksonXmlProperty(localName = "pokedexEntry")
     @JsonProperty("pokedex_entry")
     @JsonManagedReference
-    @JsonIgnore
     private Pokedex pokedexentry;
 
     /**
@@ -73,7 +72,6 @@ public class Pokemon {
     @JacksonXmlProperty(localName = "adestrador")
     @JsonProperty("adestrador")
     @JsonManagedReference
-    @JsonIgnore
     private Adestrador adestrador;
 
     /**
