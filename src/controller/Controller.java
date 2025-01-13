@@ -42,6 +42,7 @@ public class Controller {
         // Inserta datos iniciales en las bases de datos
 
 
+
         /*
         crud.insertar10PokemonsInPokedex(metodosPokedex.getPokemonsList());
         crud.insertar2AdestradoresInAdestrador(metodosAdestrador.getAdestradoresList());
@@ -55,7 +56,9 @@ public class Controller {
         wrdXmlJson.writeJsonFilePokemon(crud.getPokemonFromDB());
         wrdXmlJson.writeJsonFileAdestradores(crud.getAdestradorFromDB());
 
-        */
+
+         */
+
 
 
         // Elimina datos de la base de datos
@@ -64,9 +67,15 @@ public class Controller {
 
         // Lee los datos desde archivos XML y JSON
 
+
         Pokemons pokemonsJson = wrdXmlJson.readJsonFilePokemon();
         List<Pokemon> pokemonJsonList = wrdXmlJson.readListPokemonsJson(pokemonsJson);
 
+        for(Pokemon pokemon : pokemonJsonList){
+            System.out.println(pokemon);
+        }
+
+        /*
         Adestradores adestradoresJson = wrdXmlJson.readJsonFileAdestrador();
         List<Adestrador> adestradorJsonList =  wrdXmlJson.readListAdestradoresJson(adestradoresJson);
 
@@ -77,6 +86,8 @@ public class Controller {
         List<Adestrador> adestradorXmlList = wrdXmlJson.readListAdestradorXml(adestradoresXml);
 
 
+
+         */
 
 
 

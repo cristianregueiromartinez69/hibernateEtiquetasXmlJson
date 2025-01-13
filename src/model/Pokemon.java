@@ -57,7 +57,7 @@ public class Pokemon {
      * Relación Many-to-One con la entidad {@link Pokedex}.
      */
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference("pokemons")
+    @JsonBackReference("pokedex")
     @JoinColumn(name = "pokedexentry")
     @JacksonXmlProperty(localName = "pokedexEntry")
     @JsonProperty("pokedex_entry")
@@ -68,7 +68,7 @@ public class Pokemon {
      * Relación Many-to-One con la entidad {@link Adestrador}.
      */
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference("pokemons")
+    @JsonBackReference("adestradores")
     @JoinColumn(name = "adestrador")
     @JacksonXmlProperty(localName = "adestrador")
     @JsonProperty("adestrador")
